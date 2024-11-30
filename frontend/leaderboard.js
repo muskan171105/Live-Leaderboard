@@ -9,8 +9,7 @@ const collectionId = "674ab9cc00360ba3d51a";
 
 async function getLeaderboard() {
   try {
-    // Fetch documents from the Appwrite database (leaderboard collection)
-    const response = await databases.listDocuments(databaseId, collectionId, [], 50);  // Adjust limit as needed
+    const response = await databases.listDocuments(databaseId, collectionId, [], 50);  
     
     const leaderboard = response.documents;
 
@@ -37,5 +36,4 @@ async function getLeaderboard() {
 document.addEventListener("DOMContentLoaded", function() {
   getLeaderboard();
 });
-// Update the leaderboard every 5 seconds
-setInterval(getLeaderboard, 5000);  // 5000ms = 5 seconds
+setInterval(getLeaderboard, 5000);  
