@@ -1,0 +1,102 @@
+/* General Reset */
+body {
+  font-family: 'Arial', sans-serif;  /* Default font */
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* Black background */
+  color: #fff; /* White text */
+  line-height: 1.6;
+}
+
+/* Container for Leaderboard */
+.container {
+  width: 80%;
+  margin: 50px auto;
+  background: #1c1c1c; /* Dark background for the container */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title - Leaderboard */
+h1 {
+  text-align: center;
+  color: #fff; /* White text */
+  font-size: 36px; /* Larger font size */
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif; /* A good font for the title */
+  font-weight: bold;
+  letter-spacing: 3px; /* Some letter spacing */
+  text-transform: uppercase; /* Capitalize the title */
+  border-bottom: 5px solid #ffeb3b; /* Yellow underline */
+  padding-bottom: 10px;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Table Header */
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Yellow Header Bar */
+th {
+  background-color: #ffeb3b; /* Yellow background */
+  color: black; /* Black text for the header */
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif; /* A good font */
+  text-transform: uppercase; /* Capitalize header text */
+}
+
+/* Table Body (Rows) */
+td {
+  background-color: #333; /* Dark background for rows */
+  color: white; /* White text */
+  font-family: 'Arial', sans-serif;
+}
+
+tr:nth-child(even) {
+  background-color: #444; /* Alternating row colors */
+}
+
+/* Table Hover Effect */
+tr:hover {
+  background-color: #555; /* Slightly lighter on hover */
+}
+
+/* Button Styling */
+button {
+  display: inline-block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #ffeb3b; /* Yellow button */
+  color: black; /* Black text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #fdd835; /* Lighter yellow on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+      width: 95%;
+  }
+
+  table {
+      font-size: 14px;
+  }
+}
