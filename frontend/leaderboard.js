@@ -1,6 +1,6 @@
 const client = new Appwrite.Client()
-  .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject("674ab92e000110d38081");  
+  .setEndpoint("https://cloud.appwrite.io/v1")  
+  .setProject("674ab92e000110d38081"); 
 
 const databases = new Appwrite.Databases(client);
 
@@ -9,7 +9,9 @@ const collectionId = "674ab9cc00360ba3d51a";
 
 async function getLeaderboard() {
   try {
-    const response = await databases.listDocuments(databaseId, collectionId, [], 50);  
+    // Fetch documents from the Appwrite database (leaderboard collection)
+    const response = await databases.listDocuments(databaseId, collectionId, [], 50);  // Adjust limit as needed
+    
     const leaderboard = response.documents;
 
     const tableBody = document.getElementById("table-body");
@@ -35,4 +37,5 @@ async function getLeaderboard() {
 document.addEventListener("DOMContentLoaded", function() {
   getLeaderboard();
 });
-setInterval(getLeaderboard, 5000); 
+// Update the leaderboard every 5 seconds
+setInterval(getLeaderboard, 5000);  // 5000ms = 5 seconds
