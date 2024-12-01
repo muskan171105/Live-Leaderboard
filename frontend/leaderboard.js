@@ -1,11 +1,11 @@
 const client = new Appwrite.Client()
   .setEndpoint("https://cloud.appwrite.io/v1")  
-  .setProject("674ab92e000110d38081"); 
+  .setProject("674c1377002c0b1b98d9"); 
 
 const databases = new Appwrite.Databases(client);
 
-const databaseId = "674ab96b003a6b6d83b5"; 
-const collectionId = "674ab9cc00360ba3d51a"; 
+const databaseId = "674c139a000e63d9ae2c"; 
+const collectionId = "674c13ce0014e4a5ac12"; 
 
 async function getLeaderboard() {
   try {

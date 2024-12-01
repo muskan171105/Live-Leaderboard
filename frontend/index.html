@@ -6,6 +6,78 @@
     <title>Live Leaderboard</title>
     <link rel="stylesheet" href="styles.css">
     <link href="output.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #181818;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #ffd700; 
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 2.5em;
+        }
+        #leaderboard {
+            margin: 20px auto;
+            width: 80%;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #444;
+        }
+        th {
+            background-color: #ffd700; 
+            color: #000;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #333;
+        }
+        tr:nth-child(odd) {
+            background-color: #444;
+        }
+        tr:hover {
+            background-color: #555;
+        }
+        #entry-form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #entry-form input {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #555;
+            background-color: #333;
+            color: #fff;
+        }
+        #entry-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffd700;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #entry-form button:hover {
+            background-color: #e5c200;
+        }
+    </style>
 </head>
 <body>
     <h1>Live Leaderboard</h1>
@@ -19,11 +91,78 @@
                 </tr>
             </thead>
             <tbody id="leaderboard-body">
-                <!-- Dynamic rows will be added here -->
             </tbody>
         </table>
     </div>
+
+    <div id="entry-form">
+        <input id="name-input" type="text" placeholder="Enter Name" required />
+        <input id="score-input" type="number" placeholder="Enter Score" required />
+        <button id="submit-button">Add Entry</button>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/appwrite"></script>
     <script src="leaderboard.js"></script>
+    <script>
+        const tableBody = document.getElementById("leaderboard-body");
+        const nameInput = document.getElementById("name-input");
+        const scoreInput = document.getElementById("score-input");
+        const submitButton = document.getElementById("submit-button");
+
+        submitButton.addEventListener("click", async () => {
+            const name = nameInput.value.trim();
+            const score = parseInt(scoreInput.value.trim(), 10);
+
+            if (!name || isNaN(score)) {
+                alert("Please enter a valid name and score.");
+                return;
+            }
+
+            try {
+                const response = await fetch("/update-score", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, score }),
+                });
+
+                if (response.ok) {
+                    alert("Entry added successfully!");
+                    loadLeaderboard();
+                } else {
+                    const errorData = await response.json();
+                    alert("Error: " + errorData.error);
+                }
+            } catch (error) {
+                console.error("Error adding entry:", error);
+                alert("An error occurred while adding the entry.");
+            }
+
+            nameInput.value = "";
+            scoreInput.value = "";
+        });
+
+        async function loadLeaderboard() {
+            try {
+                const response = await fetch("/leaderboard");
+                const data = await response.json();
+
+                tableBody.innerHTML = "";
+
+                data.forEach((item, index) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${item.name}</td>
+                        <td>${item.score}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error("Error loading leaderboard:", error);
+            }
+        }
+
+        loadLeaderboard();
+    </script>
 </body>
 </html>

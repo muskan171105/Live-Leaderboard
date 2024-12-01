@@ -2,32 +2,19 @@ const express = require("express");
 const { Client, Databases, Query } = require("node-appwrite");
 const path = require("path");
 
-
 const app = express();
-<<<<<<< HEAD
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, "frontend")));
 
-app.use(express.static(path.join(__dirname, "frontend"))); 
-
-=======
-app.use(express.json()); 
-
-app.use(express.static(path.join(__dirname, "frontend"))); 
-
->>>>>>> 8813f52fb2be1b1be07caa32baa9d3a0bb690be6
 const client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1") 
-    .setProject("674ab92e000110d38081") 
-    .setKey("standard_a11c2b401b95a20703ea289981d62eb23225f28b110396ce48d22c6a5ef83ee247941b7583d8a7087052ef714dff173529b8dafc74c9ab417758ce94859336469e50d1121ed8eda1dcaab338478aca88e4fd30cfd0435f875c216444579ccb734d5c7aeba73629b2fdd5da02f7117e45c90aea276116dca5fba9793b1394d945"); 
-<<<<<<< HEAD
-const databaseId = "674ab96b003a6b6d83b5"; 
-const collectionId = "674ab9cc00360ba3d51a"; 
+    .setProject("674c1377002c0b1b98d9") 
+    .setKey("standard_33d2f2ea27970f47d1fc0fec49d7e4324d168c29008080930d9da6682f7076af872b94312d5de80ae82f4dda7e5a33b52a6bf69908429b995ddd4e8d097f2f7f4aa8fc47f4927822ba268788e892c7f42d36d4355e823f3e5ac2427a61f0636d49beb162eaaec151b3ba84a5ea95ffb5d3d385dc11e92317eded3c8f2b81b816"); 
 
-=======
-const databaseId = "674ab96b003a6b6d83b5";
-const collectionId = "674ab9cc00360ba3d51a"; 
->>>>>>> 8813f52fb2be1b1be07caa32baa9d3a0bb690be6
+const database = new Databases(client);
+const databaseId = "674c139a000e63d9ae2c"; 
+const collectionId = "674c13ce0014e4a5ac12"; 
 
 app.get("/leaderboard", async (req, res) => {
     try {
@@ -40,10 +27,6 @@ app.get("/leaderboard", async (req, res) => {
     }
 });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 8813f52fb2be1b1be07caa32baa9d3a0bb690be6
 app.post("/update-score", async (req, res) => {
     const { name, score } = req.body;
 
