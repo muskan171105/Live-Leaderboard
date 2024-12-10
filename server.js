@@ -14,7 +14,7 @@ const client = new Client()
 
 const database = new Databases(client);
 const databaseId = "674c139a000e63d9ae2c"; 
-const collectionId = "674c13ce0014e4a5ac12"; 
+const collectionId = "6757f9740038df24bcdb"; 
 
 app.get("/leaderboard", async (req, res) => {
     try {
