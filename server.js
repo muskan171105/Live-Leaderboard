@@ -9,12 +9,12 @@ app.use(express.static(path.join(__dirname, "frontend")));
 
 const client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1") 
-    .setProject("674c1377002c0b1b98d9") 
-    .setKey("standard_33d2f2ea27970f47d1fc0fec49d7e4324d168c29008080930d9da6682f7076af872b94312d5de80ae82f4dda7e5a33b52a6bf69908429b995ddd4e8d097f2f7f4aa8fc47f4927822ba268788e892c7f42d36d4355e823f3e5ac2427a61f0636d49beb162eaaec151b3ba84a5ea95ffb5d3d385dc11e92317eded3c8f2b81b816"); 
+    .setProject("6749aac90038687908b7") 
+    .setKey("standard_1a385caafdcb5c90115c1685d9ffbd01b43ae4672367c329176fe7cd3d04189a91549abb92f7b0102d78ebed45a52991cc2fb30efdd7aab35b92171d2641c263c85252863b8480ea5a9a514a9fc908cb1ed5068ca5e1397a04ea5e57613bbf4f5a0d41e2a57a858812dc4a626437a314232a243c474ce75c260b8e4ec22af089"); 
 
 const database = new Databases(client);
-const databaseId = "674c139a000e63d9ae2c"; 
-const collectionId = "6757f9740038df24bcdb"; 
+const databaseId = "6749aaef0034b73295d6"; 
+const collectionId = "679656b300020ec3e00b"; 
 
 app.get("/leaderboard", async (req, res) => {
     try {
