@@ -12,7 +12,12 @@ async function getLeaderboard() {
     const response = await databases.listDocuments(databaseId, collectionId, [], 50);  
     const leaderboard = response.documents;
 
-    const tableBody = document.getElementById("table-body");
+    const tableBody = document.getElementById("leaderboard-body");  
+
+    if (!tableBody) {
+      console.error("Element with ID 'leaderboard-body' not found!");
+      return;
+    }
 
     tableBody.innerHTML = "";
 
@@ -21,8 +26,8 @@ async function getLeaderboard() {
 
       row.innerHTML = `
         <td class="px-4 py-2 border text-center">${index + 1}</td>
-        <td class="px-4 py-2 border text-center">${player.round_name}</td>
-        <td class="px-4 py-2 border text-center">${player.points_awarded}</td>
+        <td class="px-4 py-2 border text-center">${player.name}</td>
+        <td class="px-4 py-2 border text-center">${player.score}</td>
       `;
 
       tableBody.appendChild(row);
