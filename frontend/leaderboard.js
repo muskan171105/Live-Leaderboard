@@ -12,12 +12,7 @@ async function getLeaderboard() {
     const response = await databases.listDocuments(databaseId, collectionId, [], 50);  
     const leaderboard = response.documents;
 
-    const tableBody = document.getElementById("leaderboard-body");  
-
-    if (!tableBody) {
-      console.error("Element with ID 'leaderboard-body' not found!");
-      return;
-    }
+    const tableBody = document.getElementById("table-body");
 
     tableBody.innerHTML = "";
 
