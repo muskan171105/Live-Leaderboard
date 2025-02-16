@@ -26,8 +26,8 @@ async function getLeaderboard() {
 
       row.innerHTML = `
         <td class="px-4 py-2 border text-center">${index + 1}</td>
-        <td class="px-4 py-2 border text-center">${player.name}</td>
-        <td class="px-4 py-2 border text-center">${player.score}</td>
+        <td class="px-4 py-2 border text-center">${player.round_name}</td>
+        <td class="px-4 py-2 border text-center">${player.points_awarded}</td>
       `;
 
       tableBody.appendChild(row);
@@ -38,4 +38,4 @@ async function getLeaderboard() {
 }
 
 document.addEventListener("DOMContentLoaded", getLeaderboard);
-setInterval(getLeaderboard, 5000);
+setInterval(getLeaderboard, 5005);
