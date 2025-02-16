@@ -51,7 +51,7 @@ app.post("/update-score", async (req, res) => {
     }
 });
 
-const PORT = 5000;
+const PORT = 4000;
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
