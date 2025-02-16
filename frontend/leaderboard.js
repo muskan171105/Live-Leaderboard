@@ -10,7 +10,6 @@ const collectionId = "679656b300020ec3e00b";
 async function getLeaderboard() {
   try {
     const response = await databases.listDocuments(databaseId, collectionId, [], 50);  
-    
     const leaderboard = response.documents;
 
     const tableBody = document.getElementById("table-body");
@@ -33,7 +32,5 @@ async function getLeaderboard() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  getLeaderboard();
-});
-setInterval(getLeaderboard, 5000);  
+document.addEventListener("DOMContentLoaded", getLeaderboard);
+setInterval(getLeaderboard, 5000);
