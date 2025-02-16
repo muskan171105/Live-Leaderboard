@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, "frontend")));
 
 const client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1") 
-    .setProject("6749aac90038687908b7") 
+    .setProject("67b216fe000efd7ab28c") 
     .setKey("standard_1a385caafdcb5c90115c1685d9ffbd01b43ae4672367c329176fe7cd3d04189a91549abb92f7b0102d78ebed45a52991cc2fb30efdd7aab35b92171d2641c263c85252863b8480ea5a9a514a9fc908cb1ed5068ca5e1397a04ea5e57613bbf4f5a0d41e2a57a858812dc4a626437a314232a243c474ce75c260b8e4ec22af089"); 
 
 const database = new Databases(client);
